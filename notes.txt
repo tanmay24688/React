@@ -1,0 +1,244 @@
+Server side rendered framework : Next js or remix
+Static site generation: gatsby or astro
+
+vite toolkit used to create javascript project
+
+when using react install react developer tools on browser.
+
+react.dev website for documentation.
+
+to create project: npm create vite@latest JobSearchWebsite
+to run project : npm run dev
+
+index.html is a single page application.
+
+how it works:
+div id is root and entry point is main.jsx file.
+
+reactdom is a libary allow to working with dom of the browser.
+createroot is passing root element and calling render method.
+calling app component which is app.jsx.
+
+
+
+New Project:
+
+1.npm create vite@4.1.0
+
+give project name and select typescript
+
+2. npm i
+
+to install packages.
+
+4. code .  <-- to open vs code
+
+ctrl + `  <-- to go to command prompt
+
+3. npm run dev  <-- first react app
+
+ts for typescript file and tsx for react file
+
+-----------
+
+// Pascal Casing
+function Message(){  <--Always first name capital
+
+}
+
+
+<Message/>  <-- this is clalled self closing syntex.
+
+Virtual dom comparing current dom and modified dom and updating only part which is updating.
+
+
+Message.tsx file.
+
+function Message(){
+  const name='Tanmay'
+  if(name)
+    return <h1>Hello World {name}</h1>  //Single curly brace to display dynamic name
+  return <h1>Hello World</h1>
+}
+
+
+library: tool provide specific functionality
+framework: set of tools and guidelines to build applications
+react is library and tool to build mordern application
+
+install bootstrap to make code stylist
+
+npm i bootstrap@5.2.3
+
+import 'bootstrap/dist/css/bootstrap.css' <--add this in main line. Remove all css files.
+
+ctrl+ P to search for files.
+
+if you want to replace all words at once in windows go to selected word->ctrl + D->Keep pressing till you select all
+
+ctrl+D <-- Multi Cursor editing
+
+View->Command Pallet-> Format document->Configure->select Prettier
+
+
+Wrap with abbreviation : for this view->command pallet->select wrap with abbreviation -> type div
+your code will be inside div
+
+but we are using extra div which is not necessary. to avoid that use fragment. 
+
+import { Fragment } from "react";
+
+ <Fragment>
+        <h1>List</h1>
+        <ul className="list-group">
+          <li className="list-group-item">An item</li>
+          <li className="list-group-item">A second item</li>
+          <li className="list-group-item">A third item</li>
+          <li className="list-group-item">A fourth item</li>
+          <li className="list-group-item">And a fifth one</li>
+        </ul>
+    </Fragment>
+
+or 
+    <>
+        <h1>List</h1>
+        <ul className="list-group">
+          <li className="list-group-item">An item</li>
+          <li className="list-group-item">A second item</li>
+          <li className="list-group-item">A third item</li>
+          <li className="list-group-item">A fourth item</li>
+          <li className="list-group-item">And a fifth one</li>
+        </ul>
+    </>
+
+Both are same.
+
+const to define constants and let to define scope related variables.
+for arrays in javascript use map.
+
+
+ let items = ["New York", "San Franscisco", "Tokyo", "London", "Paris"];
+  items = [];
+  if (items.length === 0)
+    return (
+      <>
+        <h1>List</h1>
+        <p>No Items found</p>
+      </>
+    );
+   return (
+    <>
+      <h1>List</h1>
+      <ul className="list-group">
+        {items.map((item) => (
+          <li key={item}>{item}</li> //key is requied else it'll throw warning. Its like id.
+        ))}
+      </ul>
+    </>
+  );
+
+
+
+------------
+ let items = ["New York", "San Franscisco", "Tokyo", "London", "Paris"];
+  items = [];
+//   if (items.length === 0)
+//     return (
+//       <>
+//         <h1>List</h1>
+//         <p>No Items found</p>
+//       </>
+//     );
+
+//or
+
+//const message=items.length===0?<p>No Items found</p>:null
+  return (
+    <>
+      <h1>List</h1>
+      {items.length===0?<p>No Items found</p>:null} //Another way or define in variable
+      <ul className="list-group">
+        {items.map((item) => (
+          <li key={item}>{item}</li> //key is requied else it'll throw warning. Its like id.
+        ))}
+      </ul>
+    </>
+  );
+}
+
+Every component has its own state. 
+
+const [selectedIndex,setSelectedIndex]=useState(-1);
+  //const [name,setName]=useState('')
+ // arr[0] //variable
+ // arr[1]//updater function
+
+
+How to make component reusable. <-- Use props.
+
+using interface you can pass values.
+
+props are immutable <--not changable or you can say readonly.
+state are mutable. it can change overtime.
+
+
+arrow function export short cut is : new file ->tsx file ->type rafce
+
+In alert.tsx file below code
+
+import React from 'react'
+interface Props{
+    text:string;
+  }
+const Alert = ({text}:Props) => {
+  return (
+    <div>
+      {text}
+    </div>
+  )
+}
+
+export default Alert
+
+In app.tsx file below code calling
+
+<Alert text="Hello World"/>
+
+if bigger string you want to write then replace iterface props text to children
+
+interface Props{
+    children:string;
+  }
+
+const Alert = ({children}:Props) => {
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}
+
+export default Alert
+
+So you can pass like this.
+
+<Alert>
+   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo, deleniti laudantium itaque facilis esse molestiae nisi vitae dolorum eum odit. Aliquid nobis magni facere, veritatis a in laboriosam provident sed quidem cumque totam quasi cupiditate ut odio numquam qui maxime illo iste. Excepturi totam ex soluta voluptatibus incidunt laudantium in earum optio, pariatur praesentium necessitatibus unde beatae ipsam temporibus expedita corporis. Odio, ipsa? Voluptatem repellendus assumenda ratione corporis, dignissimos aliquid deleniti porro id, enim quidem consequatur nobis eos facere rem quod, possimus animi ea ipsam asperiores! Ipsa vero repellat nulla cumque fugiat corporis, ex inventore nemo porro laborum cum laudantium?
+    </Alert>
+
+
+
+
+if passing like this :
+<Alert>
+   Lorem ipsum dolor <span>hi</span>
+    </Alert>
+
+then 
+
+below interface change
+
+interface Props{
+    children:ReactNode;
+  }
+
